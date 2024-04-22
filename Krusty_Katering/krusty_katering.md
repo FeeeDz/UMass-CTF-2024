@@ -52,3 +52,5 @@ if __name__ == "__main__":
 
 # UMASS{subst@nd@rd_c00k}
 ```
+Flag:
+![mean_image_clahe](https://github.com/FeeeDz/UMass-CTF-2024/assets/67475596/1a819af4-53e7-4bac-a331-848b760440ab)
