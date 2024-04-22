@@ -17,4 +17,5 @@ cv2.imwrite(output_path_clahe, mean_image_clahe)
 ```
 
 Result:
-- inserire immagine flag
+Flag <br>
+![mean_image_clahe](https://github.com/FeeeDz/UMass-CTF-2024/assets/67475596/1a819af4-53e7-4bac-a331-848b760440ab)
