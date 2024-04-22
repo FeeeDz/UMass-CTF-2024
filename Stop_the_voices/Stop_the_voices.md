@@ -7,6 +7,44 @@ The challenge give us a folder with 400 images with a lot of noise.
 These images are generated with `generator.py`.
 My solution was to sum up the noise of all the images and divide them by len of the images, then output an `mean image`.
 
+```python
+import cv2
+import os
+import numpy as np
+
+# Percorso della cartella contenente le immagini
+input_folder_path = "./samples"
+
+# Lista per memorizzare tutte le immagini
+images = []
+
+# Loop attraverso tutte le immagini nella cartella di input
+for filename in os.listdir(input_folder_path):
+    if filename.endswith(".png"):
+        # Carica l'immagine
+        image_path = os.path.join(input_folder_path, filename)
+        image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
+
+        if image is None:
+            print(f"Errore nel caricamento dell'immagine: {filename}")
+            continue
+
+        # Aggiungi l'immagine alla lista
+        images.append(image)
+
+# Somma tutte le immagini nella lista
+sum_image = np.sum(images, axis=0)  # Somma lungo l'asse 0 (lungo le immagini)
+
+# Calcola la media delle immagini sommate
+mean_image = sum_image / len(images)
+
+# Salva l'immagine media
+output_folder_path = "./denoised_samples"
+os.makedirs(output_folder_path, exist_ok=True)
+output_path = os.path.join(output_folder_path, "mean_image.png")
+cv2.imwrite(output_path, mean_image)
+```
+
 With these lines of code i improved the readability of the `mean image`
 ```python
 mean_image_8bit = cv2.normalize(mean_image, None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_8U)
@@ -16,6 +54,5 @@ output_path_clahe = os.path.join(output_folder_path, "mean_image_clahe.png")
 cv2.imwrite(output_path_clahe, mean_image_clahe)
 ```
 
-Result:
 Flag <br>
 ![mean_image_clahe](https://github.com/FeeeDz/UMass-CTF-2024/assets/67475596/1a819af4-53e7-4bac-a331-848b760440ab)
